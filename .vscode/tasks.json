@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Init SQLite DB",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"-c",
+				"import sqlite3; conn = sqlite3.connect('words.base.db'); conn.execute(\"CREATE TABLE IF NOT EXISTS words (id INTEGER PRIMARY KEY AUTOINCREMENT, word TEXT NOT NULL, translation TEXT NOT NULL, list_name TEXT NOT NULL)\"); conn.commit(); print(conn.execute(\"SELECT name FROM sqlite_master WHERE type='table' AND name='words'\").fetchall()); print(conn.execute(\"PRAGMA table_info(words)\").fetchall()); conn.close()"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}
